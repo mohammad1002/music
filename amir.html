@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <title>سایت من</title>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+ <header>
+  <nav>
+   <ul>
+    <li><a href="#">خانه</a></li>
+    <li><a href="#">درباره ما</a></li>
+    <li><a href="#">تماس : 09123585815 </a></li>
+   </ul>
+  </nav>
+ </header>
+	
+ <main>
+  <section>
+   <h1>به سایت من خوش آمدید</h1>
+   <p>اینجا می توانید توضیحاتی در مورد سایت خود قرار دهید.</p>
+   <button>مشاهده بیشتر</button>
+  </section>
+  
+  <section>
+   <h2>عنوان دوم</h2>
+   <p>توضیحاتی در مورد موضوع دوم سایت خود را در اینجا قرار دهید.</p>
+   <button>مشاهده بیشتر</button>
+      <h2>سلام من امیرحسین دولتی هستم
+  </section>
+  </h2>
+  
+  
+  <section>
+   <h2>عنوان سوم</h2>
+   <p>توضیحاتی در مورد موضوع سوم سایت خود را در اینجا قرار دهید.</p>
+   <button>مشاهده بیشتر</button>
+  </section>
+ </main>
+	
+ <footer>
+  <p>تمامی حقوق مادی و معنوی برای سایت من محفوظ است.</p>
+ </footer>
+ <form method="get" action="/search">
+    <input type="text" name="query" />
+    <button type="submit">جستجو</button>
+ </form>
+
+ <?php
+    // بررسی درخواست جستجو
+    if (isset($_GET['query'])) {
+       $query = $_GET['query'];
+
+       // تعریف پارامترهای جستجو
+       $params = array('q' => urlencode($query), 'start' => 0, 'num' => 10, 'output' => 'xml_no_dtd', 'client' => 'google-csbe', 'cx' => '012345678901234567890:abcdefg');
+
+       // ارسال درخواست جستجو به Google
+       $url = 'https://www.google.com/search?' . http_build_query($params);
+       $html = file_get_contents($url);
+
+       // نمایش نتایج جستجو
+       echo $html;
+    }
+ ?>
+</body>
+</html>
+
+</body>
+</html>
